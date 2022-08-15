@@ -1,0 +1,21 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'rentals/style.css' %}">
+
+<table>
+    <tr>
+        <th>Rental Name</th>
+        <th>ID</th>
+        <th>Checkin</th>
+        <th>Checkout</th>
+        <th>Previous reservation</th>
+    </tr>
+    {% for reservation in reservations %}
+        <tr>
+            <th> {{reservation.0}} </th>
+            <th> {{reservation.1}} </th>
+            <th> {{reservation.2 | date:"Y-m-d"}} </th>
+            <th> {{reservation.3 | date:"Y-m-d"}} </th>
+            <th> {{reservation.4 | default_if_none:"-"}} </th>
+        </tr>
+    {% endfor %}
+</table>
